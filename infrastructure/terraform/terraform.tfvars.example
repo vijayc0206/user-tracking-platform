@@ -1,0 +1,22 @@
+# User Tracking Platform - Terraform Variables
+# Copy this file to terraform.tfvars and fill in your values
+
+# AWS Configuration
+aws_region  = "us-east-1"
+environment = "development"
+
+# Secrets (REQUIRED - Replace with your actual values)
+mongodb_uri        = "mongodb+srv://username:password@cluster.mongodb.net/usertracking?retryWrites=true&w=majority"
+jwt_secret         = "your-jwt-secret-key-at-least-32-characters-long"
+jwt_refresh_secret = "your-refresh-secret-key-at-least-32-characters-long"
+
+# Optional: Customize these if needed
+# vpc_cidr             = "10.0.0.0/16"
+# private_subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24"]
+# public_subnet_cidrs  = ["10.0.101.0/24", "10.0.102.0/24"]
+# container_port       = 3000
+# task_cpu             = "512"
+# task_memory          = "1024"
+# api_desired_count    = 2
+# api_min_count        = 1
+# api_max_count        = 10

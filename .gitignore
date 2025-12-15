@@ -39,10 +39,12 @@ coverage/
 .nyc_output/
 
 # Terraform
-terraform/.terraform/
-terraform/*.tfstate
-terraform/*.tfstate.backup
-terraform/.terraform.lock.hcl
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+.terraform.lock.hcl
 
 # Misc
 *.tgz
