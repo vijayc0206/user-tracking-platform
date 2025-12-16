@@ -242,6 +242,7 @@ resource "aws_ecs_task_definition" "api" {
       environment = [
         { name = "NODE_ENV", value = var.environment },
         { name = "PORT", value = tostring(var.container_port) },
+        { name = "CORS_ORIGIN", value = "http://${aws_s3_bucket.frontend.bucket}.s3-website-${var.aws_region}.amazonaws.com,http://localhost:5173,http://localhost:3000" },
       ]
 
       secrets = [
@@ -260,7 +261,7 @@ resource "aws_ecs_task_definition" "api" {
       }
 
       healthCheck = {
-        command     = ["CMD-SHELL", "curl -f http://localhost:${var.container_port}/health || exit 1"]
+        command     = ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:${var.container_port}/health || exit 1"]
         interval    = 30
         timeout     = 5
         retries     = 3

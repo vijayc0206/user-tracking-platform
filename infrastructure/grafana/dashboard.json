@@ -1,0 +1,587 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 0 },
+      "id": 1,
+      "panels": [],
+      "title": "ECS Service Health",
+      "type": "row"
+    },
+    {
+      "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "palette-classic" },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": { "type": "linear" },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 1 },
+      "id": 2,
+      "options": {
+        "legend": { "calcs": ["mean", "max"], "displayMode": "table", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "single", "sort": "none" }
+      },
+      "targets": [
+        {
+          "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+          "dimensions": { "ClusterName": "utp-development-cluster", "ServiceName": "utp-development-api" },
+          "expression": "",
+          "id": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "CPUUtilization",
+          "metricQueryType": 0,
+          "namespace": "AWS/ECS",
+          "period": "300",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Average"
+        }
+      ],
+      "title": "ECS CPU Utilization",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "palette-classic" },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": { "type": "linear" },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 1 },
+      "id": 3,
+      "options": {
+        "legend": { "calcs": ["mean", "max"], "displayMode": "table", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "single", "sort": "none" }
+      },
+      "targets": [
+        {
+          "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+          "dimensions": { "ClusterName": "utp-development-cluster", "ServiceName": "utp-development-api" },
+          "expression": "",
+          "id": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "MemoryUtilization",
+          "metricQueryType": 0,
+          "namespace": "AWS/ECS",
+          "period": "300",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Average"
+        }
+      ],
+      "title": "ECS Memory Utilization",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "yellow", "value": 1 },
+              { "color": "green", "value": 2 }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 9 },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+          "dimensions": { "ClusterName": "utp-development-cluster", "ServiceName": "utp-development-api" },
+          "expression": "",
+          "id": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "RunningTaskCount",
+          "metricQueryType": 0,
+          "namespace": "ECS/ContainerInsights",
+          "period": "60",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Average"
+        }
+      ],
+      "title": "Running Tasks",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 1 },
+              { "color": "red", "value": 2 }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 9 },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+          "dimensions": { "ClusterName": "utp-development-cluster", "ServiceName": "utp-development-api" },
+          "expression": "",
+          "id": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "PendingTaskCount",
+          "metricQueryType": 0,
+          "namespace": "ECS/ContainerInsights",
+          "period": "60",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Average"
+        }
+      ],
+      "title": "Pending Tasks",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 13 },
+      "id": 6,
+      "panels": [],
+      "title": "Application Load Balancer",
+      "type": "row"
+    },
+    {
+      "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "palette-classic" },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": { "type": "linear" },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 14 },
+      "id": 7,
+      "options": {
+        "legend": { "calcs": ["mean", "max"], "displayMode": "table", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "single", "sort": "none" }
+      },
+      "targets": [
+        {
+          "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+          "dimensions": { "LoadBalancer": "app/utp-development-alb/a3b4c2d58ffc0f2b" },
+          "expression": "",
+          "id": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "RequestCount",
+          "metricQueryType": 0,
+          "namespace": "AWS/ApplicationELB",
+          "period": "60",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Sum"
+        }
+      ],
+      "title": "ALB Request Count",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "palette-classic" },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": { "type": "linear" },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": { "group": "A", "mode": "none" },
+            "thresholdsStyle": { "mode": "off" }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 80 }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 14 },
+      "id": 8,
+      "options": {
+        "legend": { "calcs": ["mean", "max", "p95"], "displayMode": "table", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "single", "sort": "none" }
+      },
+      "targets": [
+        {
+          "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+          "dimensions": { "LoadBalancer": "app/utp-development-alb/a3b4c2d58ffc0f2b" },
+          "expression": "",
+          "id": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "TargetResponseTime",
+          "metricQueryType": 0,
+          "namespace": "AWS/ApplicationELB",
+          "period": "60",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Average"
+        }
+      ],
+      "title": "ALB Response Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 10 },
+              { "color": "red", "value": 50 }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 22 },
+      "id": 9,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": { "calcs": ["sum"], "fields": "", "values": false },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+          "dimensions": { "LoadBalancer": "app/utp-development-alb/a3b4c2d58ffc0f2b" },
+          "expression": "",
+          "id": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "HTTPCode_ELB_5XX_Count",
+          "metricQueryType": 0,
+          "namespace": "AWS/ApplicationELB",
+          "period": "300",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Sum"
+        }
+      ],
+      "title": "5XX Errors",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 50 },
+              { "color": "red", "value": 100 }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 22 },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": { "calcs": ["sum"], "fields": "", "values": false },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+          "dimensions": { "LoadBalancer": "app/utp-development-alb/a3b4c2d58ffc0f2b" },
+          "expression": "",
+          "id": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "HTTPCode_ELB_4XX_Count",
+          "metricQueryType": 0,
+          "namespace": "AWS/ApplicationELB",
+          "period": "300",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Sum"
+        }
+      ],
+      "title": "4XX Errors",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "green", "value": 1 }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 22 },
+      "id": 11,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+          "dimensions": { "LoadBalancer": "app/utp-development-alb/a3b4c2d58ffc0f2b", "TargetGroup": "targetgroup/utp-development-api-tg/368936734bfe713b" },
+          "expression": "",
+          "id": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "HealthyHostCount",
+          "metricQueryType": 0,
+          "namespace": "AWS/ApplicationELB",
+          "period": "60",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Average"
+        }
+      ],
+      "title": "Healthy Hosts",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red", "value": 1 }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 22 },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": { "type": "cloudwatch", "uid": "${DS_CLOUDWATCH}" },
+          "dimensions": { "LoadBalancer": "app/utp-development-alb/a3b4c2d58ffc0f2b", "TargetGroup": "targetgroup/utp-development-api-tg/368936734bfe713b" },
+          "expression": "",
+          "id": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "UnHealthyHostCount",
+          "metricQueryType": 0,
+          "namespace": "AWS/ApplicationELB",
+          "period": "60",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Average"
+        }
+      ],
+      "title": "Unhealthy Hosts",
+      "type": "stat"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": ["aws", "ecs", "alb", "user-tracking-platform"],
+  "templating": {
+    "list": []
+  },
+  "time": { "from": "now-6h", "to": "now" },
+  "timepicker": {},
+  "timezone": "",
+  "title": "User Tracking Platform - System Monitoring",
+  "uid": "utp-system-monitoring",
+  "version": 1,
+  "weekStart": ""
+}
