@@ -116,7 +116,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
                   color="text.secondary"
                   sx={{ ml: 0.5, display: { xs: 'none', sm: 'block' } }}
                 >
-                  vs last period
+                  vs last periods
                 </Typography>
               </Box>
             )}
